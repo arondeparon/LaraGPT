@@ -55,7 +55,7 @@ function MessageBox({ onSubmit }: MessageBoxProperties) {
                           onChange={handleChange}
                           onKeyDown={handleKeyDown}
                 ></textarea>
-                <button className="absolute right-5 top-4 bg-blue-600 text-white p-2 rounded-md disabled:bg-gray-200 disabled:text-gray-500" disabled={processing || data.message === ''}
+                <button className="absolute right-5 top-4 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-500" disabled={processing || data.message === ''}
                         onClick={handleClickSubmit}
                 >
                     { processing ? 'Processing...' : 'Send' }
