@@ -8,6 +8,11 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        return view('home/index');
+        $messages = collect(request()->session()->get('messages'))
+            ->reject(function ($message) {
+                return $message['role'] === 'system';
+            });
+
+        return view('home/index')->with('messages', $messages);
     }
 }
