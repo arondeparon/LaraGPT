@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Actions\CreateConversationSummaryAction;
-use Illuminate\Http\Request;
 
 class SelectConversationController extends Controller
 {

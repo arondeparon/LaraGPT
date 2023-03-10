@@ -37,22 +37,29 @@ function MessageBox({ onSubmit }: MessageBoxProperties) {
         setData('message', '');
     };
 
+    const handleClickSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        handleSubmit(event as unknown as React.FormEvent<HTMLFormElement>);
+    }
+
     return (
         <form className="p-4 flex space-x-4 justify-center items-center" action={route('prompt')}
               id="prompt-form"
               method="post">
             <label htmlFor="message" className="hidden">Prompt:</label>
-            <textarea id="message" name="message"
-                      value={data.message}
-                      className="border rounded-md  p-2 flex-1"
-                      onChange={handleChange}
-                      onKeyDown={handleKeyDown}
-            ></textarea>
-            <button className="bg-blue-600 text-white p-2 rounded-md" disabled={processing}
-                    onClick={handleSubmit}
-            >
-                { processing ? 'Processing...' : 'Send' }
-            </button>
+            <div className="border rounded-md p-2 flex-1 relative">
+                <textarea id="message" name="message"
+                          className="w-full resize-none focus:outline-none pr-20 text-gray-800"
+                          value={data.message}
+                          onChange={handleChange}
+                          onKeyDown={handleKeyDown}
+                ></textarea>
+                <button className="absolute right-5 top-4 bg-blue-600 text-white p-2 rounded-md disabled:bg-gray-200 disabled:text-gray-500" disabled={processing || data.message === ''}
+                        onClick={handleClickSubmit}
+                >
+                    { processing ? 'Processing...' : 'Send' }
+                </button>
+            </div>
         </form>
     );
 }
