@@ -1,6 +1,4 @@
-
 import React, {useEffect, useRef, useState} from "react";
-import useRoute from "@/Hooks/useRoute";
 import Sidebar from "@/Components/Sidebar";
 import ChatMessage from "@/Components/ChatMessage";
 import MessageBox from "@/Components/MessageBox";
@@ -31,7 +29,7 @@ interface HomeProperties {
 
 
 const Home = ({currentConversation, messages, conversations}: HomeProperties) => {
-    const [loading, setLoading] = useState();
+    const [loading, setLoading] = useState(false);
     const [messageStack, setMessageStack] = useState<Message[]>(messages);
 
     const messageContainerRef = useRef<HTMLDivElement>(null);
