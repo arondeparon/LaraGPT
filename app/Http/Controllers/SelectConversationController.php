@@ -17,6 +17,7 @@ class SelectConversationController extends Controller
         }
 
         request()->session()->put('messages', $conversation['messages']);
+        request()->session()->put('current_conversation', $id);
 
         return redirect()->route('home');
     }
