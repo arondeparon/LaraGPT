@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from "classnames";
+import {marked} from "marked";
 
 enum Role {
     Assistant = 'assistant',
@@ -29,7 +30,7 @@ function ChatMessage({ message, ...rest }: ChatMessageProperties & React.HTMLAtt
             "ring-1 ring-blue-500": message.role === "user",
             "ring-1 ring-gray-300": message.role === "assistant",
         })}>
-            {message.content}
+            <div dangerouslySetInnerHTML={{ __html: marked(message.content) }} />
         </div>
     </div>;
 }

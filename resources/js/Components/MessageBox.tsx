@@ -26,6 +26,9 @@ function MessageBox({ onSubmit }: MessageBoxProperties) {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        if (data.message === '') {
+            return;
+        }
         post(route('prompt'));
         if (onSubmit) {
             onSubmit(data.message);
@@ -45,7 +48,9 @@ function MessageBox({ onSubmit }: MessageBoxProperties) {
                       onChange={handleChange}
                       onKeyDown={handleKeyDown}
             ></textarea>
-            <button type="submit" className="bg-blue-600 text-white p-2 rounded-md" disabled={processing}>
+            <button className="bg-blue-600 text-white p-2 rounded-md" disabled={processing}
+                    onClick={handleSubmit}
+            >
                 { processing ? 'Processing...' : 'Send' }
             </button>
         </form>

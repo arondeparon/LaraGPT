@@ -18,10 +18,12 @@
     },
     "dependencies": {
         "@inertiajs/react": "^1.0.2",
+        "@types/marked": "^4.0.8",
         "@types/react": "^18.0.28",
         "@types/ziggy-js": "^1.3.2",
         "@vitejs/plugin-react": "^3.1.0",
         "classnames": "^2.3.2",
+        "marked": "^4.2.12",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     }

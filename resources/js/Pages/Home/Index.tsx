@@ -31,8 +31,6 @@ interface HomeProperties {
 
 
 const Home = ({currentConversation, messages, conversations}: HomeProperties) => {
-    const route = useRoute();
-
     const [loading, setLoading] = useState();
     const [messageStack, setMessageStack] = useState<Message[]>(messages);
 
@@ -53,7 +51,7 @@ const Home = ({currentConversation, messages, conversations}: HomeProperties) =>
         });
     }, []);
 
-    const handleSubmit = (message) => {
+    const handleSubmit = (message: string) => {
         // add a dummy message to the stack
         setMessageStack([...messageStack, {
             id: messageStack.length + 1,
