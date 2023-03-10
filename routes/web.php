@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeleteConversationController;
 use App\Http\Controllers\HandlePromptController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResetController;
@@ -20,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 Route::post('/prompt', HandlePromptController::class)->name('prompt');
 Route::get('/conversation/{id}', SelectConversationController::class)->name('select-conversation');
+Route::get('/conversation/{id}/delete', DeleteConversationController::class)->name('delete-conversation');
 Route::get('/reset', ResetController::class)->name('reset');

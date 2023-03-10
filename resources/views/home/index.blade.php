@@ -16,11 +16,20 @@
                 @if ($conversations)
                     <ul class="flex flex-col m-2">
                         @foreach ($conversations as $conversation)
-                            <li>
+                            <li class="flex space-x-4 items-center group hover:bg-gray-700 rounded">
                                 <a href="/conversation/{{ $conversation['id'] }}"
                                    title="{{ $conversation['summary'] }} }}"
-                                   class="block p-4 rounded hover:bg-gray-700 truncate overflow-hidden w-80"
+                                   class="block p-4 truncate overflow-hidden w-80"
                                 >{{ $conversation['summary'] }}</a>
+                                <a href="{{ route('delete-conversation', $conversation['id']) }}" class="hidden group-hover:block pr-4 hover:text-gray-200">
+                                    <!-- trash icon -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                         viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </a>
                             </li>
                         @endforeach
                     </ul>
