@@ -23,7 +23,7 @@ const Sidebar = ({ currentConversation, conversations }: SidebarProperties) => {
                 <div>New chat</div>
             </a>
             <ul className="flex flex-col m-2 space-y-2">
-                {currentConversation ? (
+                {! currentConversation ? (
                     <li className="flex space-x-4 items-center bg-gray-700 rounded">
                         <div className="block p-4 truncate overflow-hidden w-80">[ Ongoing conversation ]</div>
                     </li>

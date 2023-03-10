@@ -3,6 +3,7 @@ import Sidebar from "@/Components/Sidebar";
 import ChatMessage from "@/Components/ChatMessage";
 import MessageBox from "@/Components/MessageBox";
 import {router} from "@inertiajs/react";
+import classNames from "classnames";
 
 enum Role {
     Assistant = 'assistant',
@@ -73,7 +74,11 @@ const Home = ({currentConversation, messages, conversations}: HomeProperties) =>
                 <div className="flex flex-col h-full w-full relative">
                     <div className="flex-grow bg-gray-200">
                         {messageStack ? messageStack.map((message, index) => (
-                            <ChatMessage key={message.id} message={message} />
+                            <div className={classNames({
+                                'bg-gray-100': message.role === 'assistant',
+                            })}>
+                                <ChatMessage key={message.id} message={message} />
+                            </div>
                         )) : null}
                         { loading ? (
                             <div className="flex justify-center items-center h-20">

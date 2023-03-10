@@ -2,39 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CreateConversationSummaryAction;
 use OpenAI\Laravel\Facades\OpenAI;
 use Str;
 
 class ResetController
 {
-    public function __invoke()
+    public function __invoke(CreateConversationSummaryAction $createConversationSummaryAction)
     {
-        $messages = request()->session()->get('messages');
-
         if (! request()->session()->has('current_conversation')) {
-            $messages[] = [
-                'role' => 'user',
-                'content' => 'Provide me with a short summary of our conversation, using max 5 words.'
-            ];
-
-            $response = OpenAI::chat()->create([
-                'model' => 'gpt-3.5-turbo',
-                'messages' => $messages,
-            ]);
-
-            // remove our last message
-            array_pop($messages);
-
-            $answer = $response->choices[0]->message->content;
-
-            $conversations = request()->session()->get('conversations', []);
-            $conversations[] = [
-                'id' => Str::uuid()->toString(),
-                'summary' => $answer,
-                'messages' => $messages,
-            ];
-
-            request()->session()->put('conversations', $conversations);
+            $createConversationSummaryAction->execute();
         }
 
         request()->session()->forget('messages');
