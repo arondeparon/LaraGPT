@@ -3,6 +3,7 @@
 use App\Http\Controllers\HandlePromptController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResetController;
+use App\Http\Controllers\SelectConversationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 Route::post('/prompt', HandlePromptController::class)->name('prompt');
+Route::get('/conversation/{id}', SelectConversationController::class)->name('select-conversation');
 Route::get('/reset', ResetController::class)->name('reset');
