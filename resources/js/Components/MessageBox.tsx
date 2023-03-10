@@ -8,6 +8,7 @@ interface MessageBoxProperties {
 function MessageBox({ onSubmit }: MessageBoxProperties) {
     const route = useRoute();
 
+
     const { data, setData, post, processing, errors } = useForm({
         message: '',
     })
