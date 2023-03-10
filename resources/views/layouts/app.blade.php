@@ -6,8 +6,8 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-<h1 class="text-3xl font-bold underline">
-    @yield('content')
-</h1>
+    <div>
+        @yield('content')
+    </div>
 </body>
 </html>
