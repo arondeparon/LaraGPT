@@ -76,7 +76,7 @@ function MessageBox({ onSubmit }: MessageBoxProperties) {
                           rows={rows}
                           placeholder="Type your message here..."
                 ></textarea>
-                <button className="absolute right-0 bottom-[6px] text-white p-2 disabled:text-gray-300 text-gray-600 hover:text-blue-600" disabled={processing || data.message === ''}
+                <button className="z-20 absolute right-0 bottom-[6px] p-2 disabled:text-gray-300 text-gray-600 hover:text-blue-600" disabled={processing || data.message === ''}
                         onClick={handleClickSubmit}
                 >
                     { processing ? (
