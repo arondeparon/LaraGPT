@@ -32,5 +32,53 @@ pre {
     overflow-y: auto;
     margin-bottom: 10px;
 }
+.content{
+    width: 100%;
+}
+.h-screen-sidebar{
+    width: 0px;
+    transition: .5s all;
+    position: relative;
+}
+.sidebar-opened .h-screen-sidebar{
+    width: 300px;
+}
+.sidebar-opened .sidebar-btn{
+    left: 300px;
 
+}
+.sticky-top{
+    overflow-x: hidden;
+}
+.h-screen-sidebar a{
+    color: white;
+   text-decoration: none;
+}
+.h-screen-sidebar a:hover{
+    color: white;
+}
+.sidebar-btn{
+    left: 0;
+    transition: .5s all;
+}
 
+.sidebar-btn {
+    position: absolute;
+    top: 0;
+    padding: 10px 15px;
+    background: #1f2937;
+    z-index: 100;
+}
+.sidebar-btn i{
+    color: white;
+}
+
+@media (max-width: 767px) {
+    .sidebar-opened .content{
+        filter: blur(4px);
+    }
+     .content .rounded-2xl{
+        width: 100%!important;
+         max-width: 90%!important;
+    }
+}

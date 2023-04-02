@@ -11,7 +11,7 @@
     @inertiaHead
 
 </head>
-<body class="bg-dark">
+<body class="bg-dark sidebar-opened">
     @inertia
 
 </body>

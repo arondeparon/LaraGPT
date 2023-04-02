@@ -23,3 +23,7 @@ Route::post('/prompt', HandlePromptController::class)->name('prompt');
 Route::get('/conversation/{id}', SelectConversationController::class)->name('select-conversation');
 Route::get('/conversation/{id}/delete', DeleteConversationController::class)->name('delete-conversation');
 Route::get('/reset', ResetController::class)->name('reset');
+Route::get('test',function (){
+    $conversations = request()->session()->get('conversations', []);
+    dd($conversations);
+});

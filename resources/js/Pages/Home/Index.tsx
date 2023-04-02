@@ -3,6 +3,7 @@ import Sidebar from "@/Components/Sidebar";
 import ChatMessage from "@/Components/ChatMessage";
 import MessageBox from "@/Components/MessageBox";
 import {Head, router} from "@inertiajs/react";
+import 'font-awesome/css/font-awesome.min.css';
 import classNames from "classnames";
 import PerfectScrollbar from "perfect-scrollbar";
 
@@ -27,7 +28,6 @@ interface HomeProperties {
     }>;
     loading: boolean;
 }
-
 
 
 const Home = ({currentConversation, messages, conversations}: HomeProperties) => {
@@ -69,37 +69,55 @@ const Home = ({currentConversation, messages, conversations}: HomeProperties) =>
     return (
         <>
             <Head title="Home"></Head>
-            <div className="flex h-full h-screen">
-                <div className="col-md-3 col-12 h-screen-sidebar bg-gray-800 text-white " id="sticky-top">
+            <div className="d-flex h-full h-screen">
+
+                <div className=" h-screen-sidebar bg-gray-800 text-white collapsed " id="sticky-top">
                     <div className="sticky-top">
                         <Sidebar conversations={conversations} currentConversation={currentConversation} />
                     </div>
+
                 </div>
-                <div className="col-md-9 col-sm-12  relative content ">
-                    <div className="flex flex-col   relative max-w-4xl mx-auto mt-4">
-                        <div className="flex-grow bg-dark rounded all-messages">
-                            {messageStack ? messageStack.map((message, index) => (
-                                <div>
-                                    <ChatMessage key={message.id} message={message} />
+                <div>
+                    <div onClick={handleClick} className="sidebar-btn">
+                        <i className={'fa fa-bars'}/>
+                    </div>
+                </div>
+                <div className="content">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12 col-sm-12  relative content ">
+                                <div className="flex flex-col   relative max-w-4xl mx-auto mt-4">
+                                    <div className="flex-grow bg-dark rounded all-messages">
+                                        {messageStack ? messageStack.map((message, index) => (
+                                            <div>
+                                                <ChatMessage key={message.id} message={message}/>
+                                            </div>
+                                        )) : null}
+                                        {loading ? (
+                                            <ChatMessage message={{
+                                                id: messageStack.length + 1,
+                                                content: '...',
+                                                role: Role.Assistant,
+                                            } as Message}/>
+                                        ) : null}
+                                        <div ref={messagesEndRef} className="h-0"/>
+                                    </div>
+                                    <div className=" left-0 right-0 bottom-0 sticky bg-dark rounded">
+                                        <MessageBox onSubmit={handleSubmit}/>
+                                    </div>
                                 </div>
-                            )) : null}
-                            { loading ? (
-                                <ChatMessage message={{
-                                    id: messageStack.length + 1,
-                                    content: '...',
-                                    role: Role.Assistant,
-                                } as Message} />
-                            ) : null}
-                            <div ref={messagesEndRef} className="h-0" />
-                        </div>
-                        <div className=" left-0 right-0 bottom-0 sticky bg-dark rounded">
-                            <MessageBox onSubmit={handleSubmit} />
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </>
     );
 };
-
+function handleClick(){
+    document.querySelector(".h-screen-sidebar").classList.toggle('collapsed');
+    document.querySelector("body").classList.toggle('sidebar-opened');
+}
 export default Home;

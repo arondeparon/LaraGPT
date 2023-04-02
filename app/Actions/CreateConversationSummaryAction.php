@@ -11,9 +11,7 @@ class CreateConversationSummaryAction
     {
         $messages = request()->session()->get('messages', []);
 
-        if (count($messages) <= 3) {
-            return;
-        }
+
 
         $messages[] = [
             'role' => 'user',

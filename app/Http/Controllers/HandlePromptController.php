@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CreateConversationSummaryAction;
 use App\Http\Requests\PromptRequest;
 use Illuminate\Http\Request;
 use OpenAI;
@@ -32,6 +33,11 @@ class HandlePromptController extends Controller
         ];
 
         $request->session()->put('messages', $messages);
+        if (!request()->session()->has('current_conversation')) {
+            $conversation = new CreateConversationSummaryAction();
+            $conversation->execute();
+            $request->session()->put('current_conversation', true);
+        }
 
         return redirect()->route('home');
     }
