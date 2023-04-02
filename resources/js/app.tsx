@@ -1,5 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import React from 'react';
 import { createInertiaApp } from '@inertiajs/react'
@@ -8,6 +9,8 @@ import {createRoot} from "react-dom/client";
 
 const appName =
     window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+
+
 
 createInertiaApp({
     title: title => `${title} - ${appName}`,

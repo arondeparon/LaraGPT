@@ -67,9 +67,9 @@ function MessageBox({ onSubmit }: MessageBoxProperties) {
               id="prompt-form"
               method="post">
             <label htmlFor="message" className="hidden">Prompt:</label>
-            <div className="border border-gray-600 rounded-md p-2 flex-1 relative">
+            <div className="form-group p-2 flex-1 relative">
                 <textarea id="message" name="message"
-                          className="w-full resize-none focus:outline-none pl-1 pr-12 text-gray-600"
+                          className="w-full resize-none focus:outline-none pl-1 pr-12 text-gray-600 form-control"
                           value={data.message}
                           onChange={handleChange}
                           onKeyDown={handleKeyDown}

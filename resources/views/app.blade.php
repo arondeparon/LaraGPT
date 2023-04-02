@@ -6,10 +6,13 @@
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
     @routes
     @viteReactRefresh
+
     @vite('resources/js/app.tsx')
     @inertiaHead
+
 </head>
-<body>
+<body class="bg-dark">
     @inertia
+
 </body>
 </html>
