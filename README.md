@@ -10,7 +10,7 @@ This is a simple clone of the ChatGPT interface using the following tools:
 
 # Demo
 
-![CleanShot 2023-03-12 at 15 23 36](https://user-images.githubusercontent.com/7697/224550938-7571642c-d467-4436-81a7-fc95e7e28e6b.gif)
+[![screen-capture-1-1.gif](https://s2.gifyu.com/images/screen-capture-1-1.gif)](https://gifyu.com/image/SIJeh)
 
 
 

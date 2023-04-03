@@ -14,7 +14,7 @@ class HandlePromptController extends Controller
         $messages = $request->session()->get('messages', [
             [
                 'role' => 'system',
-                'content' => 'You are Laravel-ChatGPT - A ChatGPT clone built with Laravel. Answer as concisely as possible.'
+                'content' => 'Sen Laravel ile yapılmış bir chat botusun ve adın SerhatGPT. Sana sorulan ilk soruda mutlaka kendini tanıtarak cevap vermelisin.'
             ],
         ]);
 
